@@ -7,6 +7,10 @@ menuIcon.onclick = () => {
     navbar.classList.toggle('active');
 }
 
+
+
+
+
 // scroll sections
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
@@ -23,6 +27,31 @@ document.addEventListener("DOMContentLoaded", function() {
     animateJobTitle(); // Initial animation
 
     setInterval(animateJobTitle, 3000); // Change job title every 3 seconds
+});
+// Add this JavaScript code to your script.js file
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Get all the "View More" buttons
+    let viewMoreButtons = document.querySelectorAll('.view-more-btn');
+
+    // Loop through each button
+    viewMoreButtons.forEach(button => {
+        // Add click event listener to each button
+        button.addEventListener('click', function() {
+            // Get the corresponding additional content based on the data-project-id attribute
+            let projectId = this.getAttribute('data-project-id');
+            let additionalContent = document.getElementById(projectId + '-content');
+
+            // Toggle the display of the additional content
+            if (additionalContent.style.display === 'none') {
+                additionalContent.style.display = 'block';
+                this.textContent = 'View Less'; // Change button text to "View Less"
+            } else {
+                additionalContent.style.display = 'none';
+                this.textContent = 'View More'; // Change button text back to "View More"
+            }
+        });
+    });
 });
 
 window.onscroll = () => {
